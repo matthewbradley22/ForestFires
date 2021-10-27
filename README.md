@@ -6,7 +6,7 @@ Link to details: https://archive.ics.uci.edu/ml/datasets/Forest+Fires
 
 ### Project Description:
 
-Our project is a regression analysis where we seek to analyze the correlation betweeen certain indexes and area burned by the fire. Our data set contains the location and time of year of each fire, as well as area burned, and several indicators and indexes related to the fire.
+Our project is a regression analysis where we seek to analyze the correlation betweeen certain indexes and area burned by a corresponding fire. Our data set contains the location and time of year of each fire, as well as area burned, and several indicators and indexes related to the fire.
 
 ### Project Goals:
 
