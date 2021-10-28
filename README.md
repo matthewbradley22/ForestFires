@@ -1,4 +1,5 @@
 ## Forest Fire Data Project
+Joel Cepeda, Jonathan Richards, Rohan Shah, Matthew Bradley, Kaushik Sivakumar
 
 Link to data: https://archive.ics.uci.edu/ml/machine-learning-databases/forest-fires/ 
 
