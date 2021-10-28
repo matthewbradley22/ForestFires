@@ -11,7 +11,7 @@ Our project is a regression analysis where we seek to analyze the correlation be
 
 ### Project Goals:
 
-Our main goal is to find which of these indicators and indexes can be best used to predict the area burned by a fire. We hope that through regression analysis we find useful trends for identifying at-risk areas of fires in the future. This may include individual relationships between our indexes and burned area, as well as interactions between indexes and weather data. We will do exploratory data analysis to identify interesting trends and follow this up with regression analysis to find which trends are meaningful.
+Our main goal is to find which of these indicators and indexes can be effectively used to predict the area burned by a fire. We hope that through regression analysis we find useful trends for identifying at-risk areas of fires in the future. This may include individual relationships between our indexes and burned area, as well as interactions between indexes and weather data. We will do exploratory data analysis to identify interesting trends and follow this up with regression analysis to find which trends are meaningful.
 
 ### References: 
 
