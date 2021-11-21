@@ -5,6 +5,8 @@ Link to data: https://archive.ics.uci.edu/ml/machine-learning-databases/forest-f
 
 Link to details: https://archive.ics.uci.edu/ml/datasets/Forest+Fires 
 
+Link to Presentation : https://docs.google.com/presentation/d/1AecewtUm9y-i5TkHaJGVxkz9x7yTRHF_G5Om3ZmoTU4/edit#slide=id.p
+
 ### Project Description:
 
 Our project is a regression analysis where we seek to analyze the correlation betweeen certain indexes and area burned by a corresponding fire. Our data set contains the location and time of year of each fire, as well as area burned, and several indicators and indexes related to the fire. These indicators are from the Fire Weather Index, and contain general information about the forest such as fuel moisture of material on the forest floor and drying of soil, as well as information about estimated speed potential of a spreading fire in an area.
