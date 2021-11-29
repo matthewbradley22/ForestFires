@@ -6,8 +6,21 @@ library(Hmisc)
 forestFires <- read_csv("/Users/matthewbradley/Downloads/forestfires.csv")
 View(forestFires)
 
+#Look for any outliers
+summary(forestFires)
+
+#Are months/days important?
+
+ggplot(data = forestFires, aes(x = month, y = area))+
+  geom_bar(stat = "identity")+
+  ggtitle("Total area burned in each month")
+
+ggplot(data = forestFires, aes(x = day, y = area ))+
+  geom_bar(stat = "identity")+
+  ggtitle("Total area burned in each day")
+
 #Histogram 
-hist.data.frame(forestFires[-c(3,4)])
+hist(forestFires[-c(3,4,13)], main = "Independent Variable Distributuions")
 
 #Normalize area data
 hist((forestFires$area), main = "Forest Fire Area", xlab = "Hectares (2.47 acres)")
