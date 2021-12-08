@@ -1,7 +1,7 @@
 ---
 title: "Forest Fire Report"
-author: '...'
-date: "12/7/2021"
+author: 'Joel Cepeda, Jonathan Richards, Rohan Shah, Matthew Bradley, Kaushik Sivakumar'
+date: "12/10/2021"
 output:
   pdf_document: default
   html_document: default
@@ -20,6 +20,23 @@ For these reasons, it is important that humans work towards finding effective wa
 However, it is very difficult to create a reliable predictive model for forest fires. Trends between fire size and weather patterns are complex, and may not tell the whole story (human response time etc... may also be important factors). Still, analysis of available tools is important can provide meaningful insight to forest fire patterns, and potentially lessen the ecological and economic impact that fires will have in the future. For this reason, we will attempt, through classification and regression, to build a predictive model that takes a variety of input and predicts forest fire area burned.
 
 ### Data
+
+![Data](/Users/matthewbradley/Desktop/dataScreenshot)
+
+Our fire data comes from measurements taken in 2007 in Montesinho park is Portugal. The data consists of 12 predictor variables that include coordinates of fire location, month, day, temperature, relative humidity (RH), wind, rain, and four fire weather indexes; Fine Fuel Moisture Code, Duff moisture Code, Drought Code, and Initial Spread Index. The only pre-processing we did with our predictor variables was creating dummy variables for the two categorical varialbes, month and day.
+
+Our resoponse variable is area burned in hectares. However, if a fire was less than 1/100 hectares large, it was marked as 0. This caused several difficulties for our analysis. First, our area variable was extremely skewed due to so many 0 entries (247 of our 517 entries had an area of 0). Secondly, it was very hard to build a regression analysis that could handle so many 0s, along with some large outliers. We handled these problems in two ways. First, to deal with the skew of the area variable, we did a log transformation ln(area + 1), so that 0 values were still 0, but ur range of values was not so right skewed. The second thing we did was build a classifier in order to predict whether a fire would have size 0 or not, and then we did a regression analysis on the fires with size greater than 0. This allowed us to create a tool that could be used to predict if there would be a sizeable fire, and if so, predict how large that fire would end up being.
+
+### Exploratory Analysis:
+
+The firest thing we did for explantory analysis was to look at the distribution of our independent variables. We did not end up doing any transformations here, but it was useful to see which variables were skewed and which were more normal. 
+
+![Histograms of Explanatory Variables](/Users/matthewbradley/Documents/SeniorFallClasses/ForestFires/explanatoryHists.pdf){width=50%}
+
+
+Our second piece of exploratory analysis was to look, indivdually, at our independent variables compared to area (our response variable), and ln(area+1), our transformed response variable. 
+
+![Scatterplots of variables vs area](/Users/matthewbradley/Documents/SeniorFallClasses/ForestFires/NormalArea.pdf){width=50%} ![Scatterplots of variables vs ln(area+1)](/Users/matthewbradley/Documents/SeniorFallClasses/ForestFires/LogArea.pdf){width=50%}
 
 
 
