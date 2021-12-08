@@ -23,9 +23,9 @@ However, it is very difficult to create a reliable predictive model for forest f
 
 ![Data](/Users/matthewbradley/Desktop/dataScreenshot)
 
-Our fire data comes from measurements taken in 2007 in Montesinho park is Portugal. The data consists of 12 predictor variables that include coordinates of fire location, month, day, temperature, relative humidity (RH), wind, rain, and four fire weather indexes; Fine Fuel Moisture Code, Duff moisture Code, Drought Code, and Initial Spread Index. The only pre-processing we did with our predictor variables was creating dummy variables for the two categorical varialbes, month and day.
+Our fire data comes from measurements taken in 2007 in Montesinho park is Portugal. The data consists of 12 predictor variables that include coordinates of fire location, month, day, temperature, relative humidity (RH), wind, rain, and four fire weather indexes; Fine Fuel Moisture Code, Duff moisture Code, Drought Code, and Initial Spread Index. The first step in the pre-processing we did with our predictor variables was creating dummy variables for the two categorical variables, month and day. The only other processing we did was using the StandardScaler tool in python to scale our variables for our modelling analysis.
 
-Our resoponse variable is area burned in hectares. However, if a fire was less than 1/100 hectares large, it was marked as 0. This caused several difficulties for our analysis. First, our area variable was extremely skewed due to so many 0 entries (247 of our 517 entries had an area of 0). Secondly, it was very hard to build a regression analysis that could handle so many 0s, along with some large outliers. We handled these problems in two ways. First, to deal with the skew of the area variable, we did a log transformation ln(area + 1), so that 0 values were still 0, but ur range of values was not so right skewed. The second thing we did was build a classifier in order to predict whether a fire would have size 0 or not, and then we did a regression analysis on the fires with size greater than 0. This allowed us to create a tool that could be used to predict if there would be a sizeable fire, and if so, predict how large that fire would end up being.
+Our response variable is area burned in hectares. However, if a fire was less than 1/100 hectares large, it was marked as 0. This caused several difficulties for our analysis. First, our area variable was extremely skewed due to so many 0 entries (247 of our 517 entries had an area of 0). Secondly, it was very hard to build a regression analysis that could handle so many 0s, along with some large outliers. We handled these problems in two ways. First, to deal with the skew of the area variable, we did a log transformation ln(area + 1), so that 0 values were still 0, but ur range of values was not so right skewed. The second thing we did was build a classifier in order to predict whether a fire would have size 0 or not, and then we did a regression analysis on the fires with size greater than 0. For this we had to create a new variable that was 0 if a fire had a size of 0, and 1 if the fire had a size greater than 0. This allowed us to create a tool that could be used to predict if there would be a sizeable fire, and if so, predict how large that fire would end up being.
 
 ### Exploratory Analysis:
 
@@ -34,11 +34,32 @@ The firest thing we did for explantory analysis was to look at the distribution 
 ![Histograms of Explanatory Variables](/Users/matthewbradley/Documents/SeniorFallClasses/ForestFires/explanatoryHists.pdf){width=50%}
 
 
-Our second piece of exploratory analysis was to look, indivdually, at our independent variables compared to area (our response variable), and ln(area+1), our transformed response variable. 
+Our second piece of exploratory analysis was to look, individually, at our independent variables compared to area (our response variable), and ln(area+1), our transformed response variable. 
 
 ![Scatterplots of variables vs area](/Users/matthewbradley/Documents/SeniorFallClasses/ForestFires/NormalArea.pdf){width=50%} ![Scatterplots of variables vs ln(area+1)](/Users/matthewbradley/Documents/SeniorFallClasses/ForestFires/LogArea.pdf){width=50%}
 
+Lastly, we examined a correlation matrix for all of our numeric variables.
 
+![Correlation Heat Map](/Users/matthewbradley/Documents/correlationMatrix.pdf){width=50%}
+
+While we will not use hypthesis testing in this analysis, we did generate seveeral hypthoses based on what we saw in the data.  
+Hypothesis 1:  
+Hypothesis 2:  
+Hypothesis 3:  
+
+### Modelling: Classification and Regression
+
+For our classification task, to decide whether a fire would have size 0, or size greater than 0, we tried three different classifiers, and examined accuracy, recall and precision. We tried an svc classifier, a knn classifier, and a random forest classifier. The random forest classifier had the highest accuracy, highest precision, and was nearly equal with the knn classifier for highest recall. A confusion matrix for our random forest is shown below:
+
+![Random Forest Confusion Matrix](/Users/matthewbradley/Desktop/rfConfusionMatrix){width=50%}
+
+Our random forest had the following statistics:  
+accuracy: 0.59  
+Precision:  0.66  
+Recall:  0.58  
+
+
+Satisfied with our classification, we moved on to the regression analysis
 
 ### Bibliography
 https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2004GL020876
