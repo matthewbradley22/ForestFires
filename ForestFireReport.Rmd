@@ -49,7 +49,7 @@ Hypothesis 3:
 
 ### Modelling: Classification and Regression
 
-For our classification task, to decide whether a fire would have size 0, or size greater than 0, we tried three different classifiers, and examined accuracy, recall and precision. We tried an svc classifier, a knn classifier, and a random forest classifier. The random forest classifier had the highest accuracy, highest precision, and was nearly equal with the knn classifier for highest recall. A confusion matrix for our random forest is shown below:
+For our classification task, to decide whether a fire would have size 0, or size greater than 0, we tried three different classifiers, and created train and test datasts. We examined accuracy, recall and precision of the three models we tried. We tried an svc classifier, a knn classifier, and a random forest classifier. The random forest classifier had the highest accuracy, highest precision, and was nearly equal with the knn classifier for highest recall. A confusion matrix for our random forest is shown below:
 
 ![Random Forest Confusion Matrix](/Users/matthewbradley/Desktop/rfConfusionMatrix){width=50%}
 
@@ -59,7 +59,24 @@ Precision:  0.66
 Recall:  0.58  
 
 
-Satisfied with our classification, we moved on to the regression analysis
+Satisfied with our classification, we moved on to the regression analysis.
+
+For our regression, we also used a random forest algorithm as well. Our data has nonlinear relationships and the response variable is continuous, so neither logistic or linear regression make sense. Out of the machine learning algorithms we learned in class, random forest regression appears to be a robust option. We used train and test datasets to examine the performance of our regression model. 
+
+Regressions results: 
+
+![Regression results](/Users/matthewbradley/Desktop/regressionResults){width=50%}
+
+### Discussion: 
+
+Our classification task  
+
+Our regression had a root mean square error 1.42, which is in the same units as our response variable (but remember, our response variable was log transformed, so the actual average error in our area prediction is higher than 1.42). Our R^2 value was 0.435, meaning we can explain around 43.5% of the variation in the data using our model. This leaves us with the question of whether we could improve our regression analysis somehow, or is our data naturally noisy, and thus hard to predict with a high value of R^2. It could also be that there are important predictor variables we are missing, such as human response time or cause of fire.
+
+### Conclusion:
+
+### Acknowledgement:
+
 
 ### Bibliography
 https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2004GL020876
