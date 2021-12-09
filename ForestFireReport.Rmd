@@ -64,8 +64,10 @@ Satisfied with our classification, we moved on to the regression analysis.
 For our regression, we also used a random forest algorithm (and remember, our regression is only on values greater than 0). Our data has nonlinear relationships and the response variable is continuous, so neither logistic or linear regression make sense. Out of the machine learning algorithms we learned in class, random forest regression appears to be a robust option. We used train and test datasets to examine the performance of our regression model. For our results, we used cross validation, and used root mean square error, because it is easily interpretable (it returns the same units as the original measurements). We also used cross validation to measure the R^2 value of th regression.
 
 Regressions results: 
+<p>
+![Regression results. Plot shows actual test data points (blue), and regression predictions for these points (red). ](/Users/matthewbradley/Desktop/regressionResults){width=50%}  
+<p>
 
-![Regression results. Plot shows actual test data points (blue), and regression predictions for these points (red). ](/Users/matthewbradley/Desktop/regressionResults){width=50%}
 
 ### Discussion: 
 
