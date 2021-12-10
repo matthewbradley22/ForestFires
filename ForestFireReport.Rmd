@@ -84,7 +84,7 @@ Our main findings were that, given our data, we were able to build a model that 
 ### Acknowledgement:   
 Matthew Bradley: Coded parts of classification and regression tasks in python. Coded parts of exploratory data analysis code in R. Made associated slides on powerpoint. Wrote associated sections of PDF report, along with producing and inserting images for report, and helping with introduction and discussion sections. Also presented regression material too class.
 
-Joel Cepeda: Worked on exploratory analysis part of powerpoint presentation and presented to class.
+Joel Cepeda: Worked on exploratory analysis, introduction, and discussions parts of powerpoint presentation and presented to class.
   
 Kaushik Sivakumar: Worked on exploratory analysis, limitations, and discussion of the powerpoint presentation and presented visual part of exploratory analysis in class.
 
