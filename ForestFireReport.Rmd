@@ -13,23 +13,23 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Introduction
 
-Forest Fires are extremely damaging ecologically, destroying significant amounts of wildlife habitat, as well as contributing to greenhouse gas emissions. Forest fires also cause severe damage to humans, destroying homes, and leading to economic burdens. And there is mounting evidence to show that as climate change worsens, forest fires will only increase in frequency (Weaver et al. 2004).
+Forest fires are extremely damaging ecologically, destroying significant amounts of wildlife habitat, as well as contributing to greenhouse gas emissions. Forest fires also cause severe damage to humans, destroy homes, and lead to economic burdens. Further, there is mounting evidence to show that as climate change worsens, forest fires will only increase in frequency (Weaver et al. 2004).
 
-For these reasons, it is important that humans work towards finding effective ways to mitigate forest fire risks. An important aspect of this is learning to identify when an area is at larger risk for forest fires, and taking preventative measures. However, these predictions are very difficult to make. Two useful tools in predicting fires are weather patterns and systems such as the fire weather index system, which tracks indexes that keep track of soil moisture, wind speed, and other factors to examine fire risk in an area.
+For these reasons, it is important that humans work towards finding effective ways to mitigate forest fire risks. An important aspect of this is learning to identify when an area is at larger risk for forest fires, and taking preventative measures. However, these predictions are very difficult to make. Two useful tools in predicting fires are weather patterns and systems such as the fire weather index system, which tracks indices that keep track of soil moisture, wind speed, and other factors to examine fire risk in an area.
 
 It is very difficult to create a reliable predictive model for forest fires. Trends between fire size and weather patterns are complex, and may not tell the whole story (human response time etc... may also be important factors). Still, analysis of available metrics is important and can provide meaningful insight to forest fire patterns, and potentially lessen the ecological and economic impact that fires will have in the future. For this reason, we will attempt, through classification and regression, to build a predictive model that takes a variety of input and predicts forest fire area burned.
 
 ### Data
 
-![Data](/Users/matthewbradley/Desktop/dataScreenshot)
+![Descriptive Statistics of Variables](/Users/matthewbradley/Desktop/dataScreenshot)
 
-Our fire data comes from measurements taken in 2007 in Montesinho park is Portugal. The data consists of 12 predictor variables that include coordinates of fire location, month, day, temperature, relative humidity (RH), wind, rain, and four fire weather indexes; Fine Fuel Moisture Code, Duff moisture Code, Drought Code, and Initial Spread Index. The first step we did in the pre-processing the data was to create dummy variables for our two categorical predictor variables, month and day. The only other processing we did on our predictor variables was using the StandardScaler tool in python to scale our variables for our modeling analysis.
+Our fire data comes from measurements taken in 2007 in Montesinho park is Portugal. The data consists of 12 predictor variables that include X and Y coordinates of fire location, month, day, temperature (Celsius), relative humidity (RH, %), wind (km/h), rain (mm/m2), and four fire weather indexes; Fine Fuel Moisture Code (FFMC), Duff Moisture Code (DMC), Drought Code (DC), and Initial Spread Index (ISI). Amiro et. al provides the following definitions for the four fire indices. FFMC is the measure of the moisture content of litter (non-decomposed organic matter) in a forest, indicating prolonged fire spread. DMC is the measure of moisture content of decomposed organic matter in a forest, indicating initial fire ignition and fuel consumption. DC is the measure of dryness of deep layers of soil, which is an indicator of heavier fuel consumption and ability to extinguish the fire. Finally, ISI is calculated from wind speed and FFMC to estimate the spread potential of a fire without considering fuel.
 
-Our response variable is area burned in hectares. However, if a fire was less than 1/100 hectares large, it was marked as 0. This caused several difficulties for our analysis. First, our area variable was extremely skewed due to so many 0 entries (247 of our 517 entries had an area of 0). Secondly, it was very hard to build a regression analysis that could handle so many 0s, along with some large outliers. We handled these problems in two ways. First, to deal with the skew of the area variable, we did a log transformation ln(area + 1), so that 0 values were still 0, but our range of values was not so right skewed. The second thing we did was build a classifier in order to predict whether a fire would have size 0 or not, and then we did a regression analysis on the fires with size greater than 0. For this we had to create a new variable that was 0 if a fire had a size of 0, and 1 if the fire had a size greater than 0. This allowed us to create a tool that could be used to predict if there would be a sizable fire, and if so, predict how large that fire would end up being.
+The first step we did in the pre-processing the data was to create dummy variables for our two categorical predictor variables, month and day. We decided to create dummy variables rather than exclude them since we saw interesting trends between month/day and area. The only other processing we did on our predictor variables was using the StandardScaler tool in python to scale our variables for our modeling analysis. Our response variable is area burned in hectares. However, if a fire was less than 1/100 hectares large, it was marked as 0. This caused several difficulties for our analysis. First, our area variable was extremely right skewed due to so many 0 entries (247 of our 517 entries had an area of 0). Secondly, it was very hard to build a regression analysis that could handle so many 0s, along with some large outliers. We handled these problems in two ways. First, to deal with the skew of the area variable, we did a log transformation ln(area + 1), so that 0 values were still 0, but our range of values was not so right skewed. The second thing we did was build a classifier in order to predict whether a fire would have size 0 or not, and then a regression analysis on the fires with size greater than 0. For this we had to create a new variable that was 0 if a fire had a size of 0, and 1 if the fire had a size greater than 0. This allowed us to create a tool that could be used to predict if there would be a sizable fire, and if so, predict how large that fire would end up being.
 
 ### Exploratory Analysis:
 
-The first thing we did for explanatory analysis was to look at the distribution of our  variables. We did not end up doing any transformations here, but it was useful to see which variables were skewed and which were more normal. We see in our predictor variables that rain (especially) and ISI are both right skewed. We also see FFMC is left skewed. Viewing the histograms of the data allowed us to have an idea of which variables may be affecting the regression in different ways than we expect (for example, if we are not happy with our analysis results, we could explore the effects of th few rainy days in our dataset, and use these to help with classification etc...).
+The first thing we did for explanatory analysis was to look at the distribution of our variables. We did not end up doing any transformations here, but it was useful to see which variables were skewed and which were more normal. We see in our predictor variables that rain (especially) and ISI are both right skewed. We also see FFMC is left skewed. Viewing the histograms of the data allowed us to have an idea of which variables may be affecting the regression in different ways than we expect (for example, if we are not happy with our analysis results, we could explore the effects of th few rainy days in our dataset, and use these to help with classification etc...).
 
 ![Histograms of Explanatory Variables](/Users/matthewbradley/Documents/SeniorFallClasses/ForestFires/explanatoryHists.pdf){width=50%}
 
@@ -38,7 +38,7 @@ Our second piece of exploratory analysis was to look, individually, at our indep
 
 ![Scatterplots of variables vs area](/Users/matthewbradley/Documents/SeniorFallClasses/ForestFires/NormalArea.pdf){width=50%} ![Scatterplots of variables vs ln(area+1)](/Users/matthewbradley/Documents/SeniorFallClasses/ForestFires/LogArea.pdf){width=50%}
 
-Lastly, we examined a correlation matrix for all of our numeric variables. We see that there are no variables that are very highly correlated with area on their own (the most significant relationships with area are with RH, which has a correlation of -0.08, and DMC, which has a correlation of 0.07). But there are some interesting trends in the heatmap: first, the FWI variables are all relatively highly correlated with each other. Second, all of the FWI variables are relatively highly correlated with temperature, which tells us temperature is probably an important factor in these indexes.
+Lastly, we examined a correlation matrix for all of our numeric variables. We see that there are no variables that are very highly correlated with area on their own (the most significant relationships with area are with RH, which has a correlation of -0.08, and DMC, which has a correlation of 0.07). But there are some interesting trends in the heatmap: first, the FWI variables are all relatively highly correlated with each other, and second, all of the FWI variables are relatively highly correlated with temperature, which tells us temperature is probably an important factor in these indices.
 
 ![Correlation Heat Map](/Users/matthewbradley/Documents/correlationMatrix.pdf){width=50%}
 
@@ -49,14 +49,14 @@ Hypothesis 3: Temperature is significantly correlated the FWI indexes.
 
 ### Modelling: Classification and Regression
 
-For our classification task, to decide whether a fire would have size 0, or size greater than 0, we tried three different classifiers, and created train and test datasets. We examined accuracy, recall and precision of the three models we tried. We tried an svc classifier, a knn classifier, and a random forest classifier. The random forest classifier had the highest accuracy, highest precision, and was nearly equal with the knn classifier for highest recall. A confusion matrix for our random forest is shown below:
+For our classification task, which was to decide whether a fire would have size 0 or size greater than 0, we tried three different classifiers and created train and test datasets. We examined accuracy, recall, and precision of the three models we tried. We tried an svc classifier, a knn classifier, and a random forest classifier. The random forest classifier had the highest accuracy, highest precision, and was nearly equal with the knn classifier for highest recall. A confusion matrix for our random forest is shown below:
 
 ![Random Forest Confusion Matrix](/Users/matthewbradley/Desktop/rfConfusionMatrix){width=50%}
 
 Our random forest had the following statistics:  
-accuracy: 0.59  
-Precision:  0.66  
-Recall:  0.58  
+Accuracy: 0.59  
+Precision: 0.66  
+Recall: 0.58  
 
 
 Satisfied with our classification, we moved on to the regression analysis.
@@ -84,5 +84,9 @@ Our main findings were that, given our data, we were able to build a model that 
 ### Acknowledgement:   
 Matthew Bradley: Coded parts of classification and regression tasks in python. Coded parts of exploratory data analysis code in R. Made associated slides on powerpoint. Wrote associated sections of PDF report, along with producing and inserting images for report, and helping with introduction and discussion sections.
 
+Rohan Shah: Coded parts of the explanatory analysis in R. Made associated slides in powerpoint. Helped with writing and added images in the report. Presented "Cleaning/Pre-Processing of Data" slides. 
+
 ### Bibliography
 https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2004GL020876
+
+  Amiro, B. D., Logan, K. A., Wotton, B. M., Flannigan, M. D., Todd, J. B., Stocks, B. J., & Martell, D. L. (2004). Fire weather index system components for large fires in the Canadian boreal forest. International Journal of Wildland Fire, 13(4), 391-400.
