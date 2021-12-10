@@ -86,7 +86,7 @@ Matthew Bradley: Coded parts of classification and regression tasks in python. C
 
 Joel Cepeda: Worked on exploratory analysis part of powerpoint presentation and presented to class.
   
-Kaushik Sivakumar: Worked on exploratory analysis, limiatations, and discussion of the powerpoint presentation and presented visual part of exploratory analysis in class.
+Kaushik Sivakumar: Worked on exploratory analysis, limitations, and discussion of the powerpoint presentation and presented visual part of exploratory analysis in class.
 
 
 
