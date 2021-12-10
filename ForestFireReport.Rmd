@@ -29,7 +29,7 @@ Our response variable is area burned in hectares. However, if a fire was less th
 
 ### Exploratory Analysis:
 
-The first thing we did for explanatory analysis was to look at the distribution of our  variables. We did not end up doing any transformations here, but it was useful to see which variables were skewed and which were more normal. We see in our predictor variables that rain (especially) and ISI are both right skewed. We also see FFMC is left skewed. Viewing the histograms of the data allowed us to have an idea of which variables may be affecting the regression in different ways than we expect (for example, if we are not happy with our analysis results, we could explore the effects of th few rainy days in our dataset, and use these to help with classification etc...).
+The first thing we did for explanatory analysis was to look at the distribution of our  variables. We did not end up doing any transformations here, but it was useful to see which variables were skewed and which were more normal. We see in our predictor variables that rain (especially) and ISI are both right skewed. We also see FFMC is left skewed. Viewing the histograms of the data allowed us to have an idea of which variables may be affecting the regression in different ways than we expect (for example, if we are not happy with our analysis results, we could explore the effects of the few rainy days in our dataset, and use these to help with model building etc...).
 
 ![Histograms of Explanatory Variables](/Users/matthewbradley/Documents/SeniorFallClasses/ForestFires/explanatoryHists.pdf){width=50%}
 
@@ -61,7 +61,7 @@ Recall:  0.58
 
 Satisfied with our classification, we moved on to the regression analysis.
 
-For our regression, we also used a random forest algorithm (and remember, our regression is only on values greater than 0). Our data has nonlinear relationships and the response variable is continuous, so neither logistic or linear regression make sense. Out of the machine learning algorithms we learned in class, random forest regression appears to be a robust option. We used train and test datasets to examine the performance of our regression model. For our results, we used cross validation, and used root mean square error, because it is easily interpretable (it returns the same units as the original measurements). We also used cross validation to measure the R^2 value of th regression.
+For our regression, we also used a random forest algorithm (and remember, our regression is only on observations with area values greater than 0). Our data has nonlinear relationships and the response variable is continuous, so neither logistic or linear regression make sense. Out of the machine learning algorithms we learned in class, random forest regression, appears to be a robust option. We used train and test datasets to examine the performance of our regression model. For our results, we used cross validation, and used root mean square error, because it is easily interpretable (it returns the same units as the original measurements). We also used cross validation to measure the R^2 value of the regression.
 
 Regressions results: 
 <p>
@@ -82,7 +82,14 @@ The main limitations of our analysis are that the data comes from a single year 
 Our main findings were that, given our data, we were able to build a model that could help predict forest fire size in Montesinho Park. Our classfier correctly predicted significantly sized fires around 58% of the time, which could be a useful tool for people trying to mitigate fire risk before fires happen. Our regression could help predict how large a fire would be, but only explained around 43.5% of the variability in the data, so there are possible improvements to be made to make the model more useful for predicting fire size.
 
 ### Acknowledgement:   
-Matthew Bradley: Coded parts of classification and regression tasks in python. Coded parts of exploratory data analysis code in R. Made associated slides on powerpoint. Wrote associated sections of PDF report, along with producing and inserting images for report, and helping with introduction and discussion sections.
+Matthew Bradley: Coded parts of classification and regression tasks in python. Coded parts of exploratory data analysis code in R. Made associated slides on powerpoint. Wrote associated sections of PDF report, along with producing and inserting images for report, and helping with introduction and discussion sections. Also presented regression material too class.
+
+Joel Cepeda: Worked on exploratory analysis part of powerpoint presentation and presented to class.
+
+
+
 
 ### Bibliography
-https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2004GL020876
+Gillett, N. P. “Detecting the Effect of Climate Change on Canadian Forest Fires.” Geophysical Research Letters, vol. 31, no. 18, 2004, p. L18211. DOI.org (Crossref), https://doi.org/10.1029/2004GL020876.
+
+P. Cortez and A. Morais. A Data Mining Approach to Predict Forest Fires using Meteorological Data. In J. Neves, M. F. Santos and J. Machado Eds., New Trends in Artificial Intelligence, Proceedings of the 13th EPIA 2007 - Portuguese Conference on Artificial Intelligence, December, Guimaraes, Portugal, pp. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9.
